@@ -1,6 +1,5 @@
-package com.ai.tools.synctools.helper.shell;
+package com.ai.tools.synctools.helper;
 
-import com.ai.tools.synctools.helper.CommandHelper;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.springframework.stereotype.Component;
@@ -19,7 +18,8 @@ public class ShellCommandsHelper extends CommandHelper {
 
             log.info("Starting clone repository...");
 
-            Process process = Runtime.getRuntime().exec("sh " + SHELL_PATH, null, file);
+            String shellPath = this.getClass().getClassLoader().getResource(SHELL_NAME).getPath();
+            Process process = Runtime.getRuntime().exec("sh " + shellPath, null, file);
             int status = process.waitFor();
 
             if (status != 0) {
@@ -30,6 +30,10 @@ public class ShellCommandsHelper extends CommandHelper {
         } catch (Exception e) {
             log.error("[ShellCommandsHelper] exec shell error", e);
         }
+    }
+
+    public static void main(String[] args) {
+        new ShellCommandsHelper().exec();
     }
 
 }

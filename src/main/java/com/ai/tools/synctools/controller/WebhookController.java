@@ -1,8 +1,6 @@
 package com.ai.tools.synctools.controller;
 
 import com.ai.tools.synctools.helper.CommandHelper;
-import com.ai.tools.synctools.helper.jgit.GitCommandsHelper;
-import com.ai.tools.synctools.helper.shell.ShellCommandsHelper;
 import com.fasterxml.jackson.databind.JsonNode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.PostMapping;
