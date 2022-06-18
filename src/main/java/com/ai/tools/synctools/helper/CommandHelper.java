@@ -1,10 +1,16 @@
 package com.ai.tools.synctools.helper;
 
+import org.springframework.beans.factory.annotation.Value;
+
 public abstract class CommandHelper {
-    //    protected static final String REMOTE_URL = "https://github.com/irwinai/JavaInterview.git";
-//    protected static final String GIT_PATH = "/root/docs/JavaInterview";
-    protected static final String FILE_PATH = "/root/docs";
-    protected static final String SHELL_NAME = "git-bash.sh";
+    @Value("${sync.path.base}")
+    protected String basePath;
+
+    @Value("${sync.repo.url}")
+    protected String repoUrl;
+
+    @Value("${sync.path.repo}")
+    protected String repoPath;
 
     public abstract void exec();
 }
